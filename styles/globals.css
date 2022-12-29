@@ -5,3 +5,7 @@ body {
   box-sizing: border-box;
   background-color: #e0f0ee;
 }
+.center {
+  margin: auto;
+  text-align: center;
+}
