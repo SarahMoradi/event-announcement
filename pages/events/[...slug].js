@@ -82,51 +82,51 @@ const FilteredEventsPage = (props) => {
   )
 }
 
-export async function getServerSideProps(context) {
-  const { params } = context
-  const filteredData = params.slug
+// export async function getServerSideProps(context) {
+//   const { params } = context
+//   const filteredData = params.slug
 
-  const filteredYear = filteredData?.[0] //"2020"
-  const filteredMonth = filteredData?.[1] //"2"
+//   const filteredYear = filteredData?.[0] //"2020"
+//   const filteredMonth = filteredData?.[1] //"2"
 
-  const numYear = +filteredYear //2020
-  const numMonth = +filteredMonth //2
+//   const numYear = +filteredYear //2020
+//   const numMonth = +filteredMonth //2
 
-  if (!filteredData) {
-    return <p className='center'>Loading...</p>
-  }
+//   if (!filteredData) {
+//     return <p className='center'>Loading...</p>
+//   }
 
-  if (
-    isNaN(numYear) ||
-    isNaN(numMonth) ||
-    numYear > 2030 ||
-    numYear < 2021 ||
-    numMonth < 1 ||
-    numMonth > 12
-  ) {
-    return {
-      props: { hasError: true }, // add new module for it
-      // notFound: true,
-      // redirect: {
-      //   destination: '/error'
-      // }
-    }
-  }
+//   if (
+//     isNaN(numYear) ||
+//     isNaN(numMonth) ||
+//     numYear > 2030 ||
+//     numYear < 2021 ||
+//     numMonth < 1 ||
+//     numMonth > 12
+//   ) {
+//     return {
+//       props: { hasError: true }, // add new module for it
+//       notFound: true,
+//       redirect: {
+//         destination: '/error'
+//        }
+//     }
+//   }
 
-  const filteredEvents = await getFilteredEvents({
-    year: numYear,
-    month: numMonth,
-  })
+//   const filteredEvents = await getFilteredEvents({
+//     year: numYear,
+//     month: numMonth,
+//   })
 
-  return {
-    props: {
-      events: filteredEvents,
-      dates: {
-        year: numYear,
-        month: numMonth
-      }
-    },
-  }
-}
+//   return {
+//     props: {
+//       events: filteredEvents,
+//       dates: {
+//         year: numYear,
+//         month: numMonth
+//       }
+//     },
+//   }
+// }
 
 export default FilteredEventsPage
