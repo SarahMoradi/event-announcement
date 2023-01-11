@@ -1,10 +1,9 @@
 .header {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   padding: 1rem 10%;
-  height: 5rem;
+  height: 4rem;
   background-color: #202020;
 }
 
@@ -28,6 +27,11 @@
   text-decoration: none;
   color: #74dacc;
   font-size: 1rem;
+}
+.navigation ul {
+  text-decoration: none !important;
+  text-decoration-style: none;
+  list-style-type: none !important;
 }
 
 @media (min-width: 768px) {

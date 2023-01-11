@@ -1,6 +1,5 @@
-import { Fragment } from 'react';
-
-import MainHeader from './main-header';
+import { Fragment } from 'react'
+import MainHeader from './main-header'
 
 function Layout(props) {
   return (
@@ -8,7 +7,6 @@ function Layout(props) {
       <MainHeader />
       <main>{props.children}</main>
     </Fragment>
-  );
+  )
 }
-
-export default Layout;
+export default Layout
