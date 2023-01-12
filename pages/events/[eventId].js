@@ -1,3 +1,4 @@
+import Comments from '../../components/input/comments'
 import ErrorAlert from '../../components/ui/error-alert'
 import EventContent from '../../components/event-detail/event-content'
 import EventLogistics from '../../components/event-detail/event-logistics'
@@ -34,6 +35,7 @@ const EventDetailsPage = () => {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
+      <Comments eventId={event.id} />
     </Fragment>
   )
 }
