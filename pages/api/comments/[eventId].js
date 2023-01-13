@@ -22,8 +22,10 @@ function handler(req, res) {
     }
     console.log(newComment)
 
-    res.status(201).json({ message: 'Added comment.', commnet: newComment })
+    res.status(201).json({ message: 'Added comment.', comment: newComment })
   }
+
+  
   if (req.method === 'GET') {
     const dummyList = [
       { id: 'c1', name: 'sarah', text: 'First Comment' },
