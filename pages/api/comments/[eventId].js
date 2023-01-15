@@ -29,6 +29,8 @@ async function handler(req, res) {
     }
     const db = client.db('events')
     const result = await db.collection('commnets').insertOne(newComment)
+    newComment.id = result.insertedId;
+    
     console.log(result)
     res.status(201).json({ message: 'Added comment.', comment: newComment })
   }
