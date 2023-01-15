@@ -16,7 +16,6 @@ async function handler(req, res) {
     await db.collection('emails').insertOne({ email: userEmail })
     client.close()
 
-
     res.status(201).json({ message: 'Your Email Was Suucessfully Verified.' })
   }
 }
