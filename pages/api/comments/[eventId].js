@@ -35,12 +35,12 @@ async function handler(req, res) {
     res.status(201).json({ message: 'Added comment.', comment: newComment })
   }
 
-  if (req.method === 'GET') {
-    const dummyList = [
-      { id: 'c1', name: 'sarah', text: 'First Comment' },
-      { id: 'c2', name: 'moradi', text: 'Second Comment' },
-    ]
-    res.status(200).json({ comments: dummyList })
+else{
+    // open database
+    const db = client.db('events');
+    //get all data and get as an array and sort by _id as desc
+    const documents = await db.collection('commnets').find().sort({_id: -1}).toArray()
+    res.status(200).json({ comments: documents })
   }
 
   client.close()
