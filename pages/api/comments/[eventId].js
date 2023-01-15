@@ -35,6 +35,8 @@ async function handler(req, res) {
     res.status(201).json({ message: 'Added comment.', comment: newComment })
   }
 
+
+// OR     if (req.method === 'GET'){}
 else{
     // open database
     const db = client.db('events');
