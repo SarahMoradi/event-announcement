@@ -18,7 +18,6 @@ function MyApp({ Component, pageProps }) {
           <title>Next event platform</title>
         </Head>
         <Component {...pageProps} />
-        <Notification title='Test' message='This is test' status='pending' />
       </Layout>
     </NotificationContextProvider>
   )
