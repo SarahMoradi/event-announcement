@@ -1,14 +1,22 @@
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 
+import NotificationContext from '../../store/notification-context'
 import classes from './newsletter-registration.module.css'
 
 function NewsletterRegistration() {
+  const notificationCtx = useContext(NotificationContext)
   const [status, setStatus] = useState()
   const userEmail = useRef()
 
   function registrationHandler(event) {
     event.preventDefault()
     const enteredEmail = userEmail.current.value
+
+    notificationCtx.showNotification({
+      title: 'Signing up ...',
+      message: 'Registering for newsletter.',
+      status: 'pending',
+    })
 
     // fetch user input (state or refs)
     // optional: validate input
@@ -23,7 +31,20 @@ function NewsletterRegistration() {
         },
       })
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+          notificationCtx.showNotification({
+            title: 'Success',
+            message: 'Successfully Registered for newsletter!',
+            status: 'success',
+          })
+        })
+        .catch((error) => {
+          notificationCtx.showNotification({
+            title: 'Error',
+            message: error.message || 'Something went wrong!',
+            status: 'error',
+          })
+        })
     }
 
     // console.log(status, 'status')
