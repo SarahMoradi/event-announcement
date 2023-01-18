@@ -22,6 +22,7 @@ function NewsletterRegistration() {
     // optional: validate input
     // send valid data to API
 
+    // one problem is that 400 and 500 errors are not cause to be failed and catch block happen
     if (enteredEmail.toLowerCase().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
       fetch('/api/newsletter', {
         method: 'POST',
@@ -30,7 +31,14 @@ function NewsletterRegistration() {
           'Content-Type': 'application/json',
         },
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if(response.ok){
+            return response.json()
+          }
+          response.json().then(data => {
+            throw new Error(data.message || 'Something went wrong!')
+          })
+        })
         .then((data) => {
           notificationCtx.showNotification({
             title: 'Success',
