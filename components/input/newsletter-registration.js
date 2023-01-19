@@ -40,7 +40,6 @@ function NewsletterRegistration() {
           })
         })
         .then((data) => {
-          console.log(data)
           notificationCtx.showNotification({
             title: 'Success',
             message: 'Successfully Registered for newsletter!',
