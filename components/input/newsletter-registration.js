@@ -32,14 +32,15 @@ function NewsletterRegistration() {
         },
       })
         .then((response) => {
-          if(response.ok){
+          if (response.ok) {
             return response.json()
           }
-          response.json().then(data => {
+          return response.json().then((data) => {
             throw new Error(data.message || 'Something went wrong!')
           })
         })
         .then((data) => {
+          console.log(data)
           notificationCtx.showNotification({
             title: 'Success',
             message: 'Successfully Registered for newsletter!',
